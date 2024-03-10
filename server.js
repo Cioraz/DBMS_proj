@@ -32,8 +32,8 @@ connection.connect((err) => {
     } else {
         console.log("CONNECTED TO DATABASE");
 
-        // Creating the table
-
+        
+        // Student Table  
         const Student = `CREATE TABLE Student (
             Reg_no int,
             Password varchar(50),
@@ -47,7 +47,7 @@ connection.connect((err) => {
             PRIMARY KEY (Reg_no)
             FOREIGN KEY (Department_id) REFERENCES Department(Department_id)
         )`;
-    
+        
         connection.query(Student, (err, result) => {
             if (err) {
                 console.log("COULD NOT CREATE TABLE");
@@ -58,7 +58,7 @@ connection.connect((err) => {
     
             }
         })
-
+        // Department Table
         const Department = `CREATE TABLE Department(
             Department_id int,
             Department_name varchar(50),
@@ -76,6 +76,7 @@ connection.connect((err) => {
             }
         })
 
+        // Company Table
         const Companies = `CREATE TABLE Companies (
             Company_id int,
             Dept_id int,
@@ -95,6 +96,8 @@ connection.connect((err) => {
             }
         })
 
+
+        // Alumni_Message Table
         const Alumni_Message = `CREATE TABLE Alumni_Message (
             Reg_no int, 
             Message varchar(200)
@@ -111,6 +114,9 @@ connection.connect((err) => {
                 }
             })
 
+
+
+        // Alumni Table
             const Alumni = `CREATE TABLE Alumni (
                 Reg_no int, 
                 Dept int, 
@@ -129,6 +135,8 @@ connection.connect((err) => {
                 }
             })
 
+
+        // Professor Table
             const Professor = `CREATE TABLE Professor (
                 Professor_id int, 
                 Department_id int, 
@@ -148,6 +156,8 @@ connection.connect((err) => {
                 }
             })
 
+
+        // Results Table
             const Results = `CREATE TABLE Results (
                 Course_id int, 
                 Student_Reg_no int,
@@ -165,6 +175,8 @@ connection.connect((err) => {
                 }
             })
 
+
+        // Course_info Table
             const Course_info = `CREATE TABLE Course_info (
                 Course_id int, 
                 Course_name varchar(50),
@@ -183,6 +195,8 @@ connection.connect((err) => {
                 }
             })
 
+
+        // Fee_transaction Table
             const Fee_transaction = `CREATE TABLE Fee_transaction (
                 Reg_no int, 
                 Amount_paid int, 
