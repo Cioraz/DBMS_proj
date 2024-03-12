@@ -14,7 +14,10 @@
   
 Now go to your MYSQL shell on terminal and login to it
 - Type ``` create database if not exists dbmsproj; ```
-- db.students.insert({studentName:"%AdMiN",studentPassword:"1029",isAdmin:true}) // To create the admin user, in the real app we can use the iris servers to get this data but here im just forcefully inserting into the database using terminal ( need to edit this still )
+- Now head over to the sever.js file and comment out the insertValues() function and uncomment the createTables() function. After doing this go to terminal and type ```nodemon server.js```
+- Now after tables get created ```ctrl+c``` to come out.
+- Again go back to the ```server.js``` file and now uncomment the insertValues() function and comment the createTables() function. After this again go to terminal and type ```nodemon server.js```
+- Now on terminal all the values must get added if it works.
 
 
 <h1>LIST OF IMPLEMENTED FEATURES :</h1>
