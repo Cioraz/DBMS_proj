@@ -1,14 +1,7 @@
-// Importing required libraries
-const express = require('express');
-const path = require('path');
-const mysql = require('mysql2');
+const mysql = require('mysql2');  
 
-const mainRoute = require('./routes/main');
-
-// Making the main express app
-const app = express();
-
-// Create a connection to the MySQL database
+const insertValues = () => {
+    // Create a connection to the MySQL database
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -30,24 +23,24 @@ const Student = [
   {
     Reg_no: 123456,
     Password: 'password123',
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    cgpa: 3.8,
-    credits_obtained: 120,
-    fee_paid: true,
-    semester: 5,
-    department_id: 1 // Assuming the department_id for the student
+    Name: 'John Doe',
+    Email: 'john.doe@example.com',
+    CGPA: 3.8,
+    Credits_Obtained: 120,
+    Fee_Paid: true,
+    Semester: 5,
+    Department_id: 1 // Assuming the department_id for the student
   },
   {
-    reg_no: 234567,
-    password: 'student234',
-    name: 'Jane Smith',
-    email: 'jane.smith@example.com',
-    cgpa: 3.5,
-    credits_obtained: 110,
-    fee_paid: true,
-    semester: 4,
-    department_id: 2
+    Reg_no: 234567,
+    Password: 'student234',
+    Name: 'Jane Smith',
+    Email: 'jane.smith@example.com',
+    CGPA: 3.5,
+    Credits_Obtained: 110,
+    Fee_Paid: true,
+    Semester: 4,
+    Department_id: 2
   },
   // Add 3 more tuples with similar structure
 ];
@@ -68,14 +61,14 @@ Student.forEach((value) => {
 // Add values to the Results table
 const Results = [
   {
-    course_id: 1,
-    student_reg_no: 123456,
-    score_obtained: 90.5
+    Course_id: 1,
+    Student_Reg_no: 123456,
+    Score_obtained: 90.5
   },
   {
-    course_id: 2,
-    student_reg_no: 234567,
-    score_obtained: 85.0
+    Course_id: 2,
+    Student_Reg_no: 234567,
+    Score_obtained: 85.0
   },
   // Add 3 more tuples with similar structure
 ];
@@ -96,23 +89,23 @@ Results.forEach((value) => {
 // Add values to the Course_Info table
 const CourseInfo = [
   {
-    course_id: 1,
-    course_name: 'Introduction to Computer Science',
-    credits: 3
+    Course_id: 1,
+    Course_name: 'Introduction to Computer Science',
+    Credits: 3
   },
   {
-    course_id: 2,
-    course_name: 'Data Structures',
-    credits: 4
+    Course_id: 2,
+    Course_name: 'Data Structures',
+    Credits: 4
   },
   // Add 3 more tuples with similar structure
 ];
 
 // Loop through each course info value and insert into the Course_Info table
 CourseInfo.forEach((value) => {
-  connection.query('INSERT INTO Course_Info SET ?', value, (err, result) => {
+  connection.query('INSERT INTO Course_info SET ?', value, (err, result) => {
     if (err) {
-      console.error('Error adding values to Course_Info table: ', err);
+      console.error('Error adding values to Course_info table: ', err);
       return;
     }
     console.log('Values added to Course_Info table');
@@ -124,14 +117,14 @@ CourseInfo.forEach((value) => {
 // Add values to the Fee_transaction table
 const feeTransaction = [
   {
-    student_reg_number: 123456,
-    amount_paid: 500,
-    semester: 5
+    Reg_no: 123456,
+    Amount_paid: 500,
+    Semester: 5
   },
   {
-    student_reg_number: 234567,
-    amount_paid: 600,
-    semester: 4
+    Reg_no: 234567,
+    Amount_paid: 600,
+    Semester: 4
   },
   // Add 3 more tuples with similar structure
 ];
@@ -152,12 +145,12 @@ feeTransaction.forEach((value) => {
 // Add values to the Department table
 const department = [
   {
-    department_id: 1,
-    department_name: 'Computer Science'
+    Department_id: 1,
+    Department_name: 'Computer Science'
   },
   {
-    department_id: 2,
-    department_name: 'Electrical Engineering'
+    Department_id: 2,
+    Department_name: 'Electrical Engineering'
   },
   // Add 3 more tuples with similar structure
 ];
@@ -178,16 +171,16 @@ department.forEach((value) => {
 // Add values to the Professor table
 const professor = [
   {
-    professor_id: 1,
-    department_id: 1,
-    name: 'Dr. Jane Smith',
-    course_id: 1
+    Professor_id: 1,
+    Department_id: 1,
+    Name: 'Dr. Jane Smith',
+    Course_id: 1
   },
   {
-    professor_id: 2,
-    department_id: 2,
-    name: 'Prof. John Doe',
-    course_id: 2
+    Professor_id: 2,
+    Department_id: 2,
+    Name: 'Prof. John Doe',
+    Course_id: 2
   },
   // Add 3 more tuples with similar structure
 ];
@@ -208,14 +201,14 @@ professor.forEach((value) => {
 // Add values to the Alumni table
 const alumni = [
   {
-    alumni_reg_no: 654321,
-    alumni_dept: 1,
-    alumni_company_id: 1001
+    Reg_no: 654321,
+    Dept: 1,
+    Company_id: 1001
   },
   {
-    alumni_reg_no: 765432,
-    alumni_dept: 2,
-    alumni_company_id: 1002
+    Reg_no: 765432,
+    Dept: 2,
+    Company_id: 1002
   },
   // Add 3 more tuples with similar structure
 ];
@@ -236,19 +229,19 @@ alumni.forEach((value) => {
 // Add values to the Alumni Alerts/Messages table
 const alumniMessages = [
   {
-    alumni_reg_no: 654321,
-    alumni_message: 'Congratulations on your graduation!'
+    Reg_no: 654321,
+    Message: 'Congratulations on your graduation!'
   },
   {
-    alumni_reg_no: 765432,
-    alumni_message: 'Best wishes for your future endeavors!'
+    Reg_no: 765432,
+    Message: 'Best wishes for your future endeavors!'
   },
   // Add 3 more tuples with similar structure
 ];
 
 // Loop through each alumni message value and insert into the Alumni Alerts/Messages table
 alumniMessages.forEach((value) => {
-  connection.query('INSERT INTO Alumni_Alerts_Messages SET ?', value, (err, result) => {
+  connection.query('INSERT INTO Alumni_Message SET ?', value, (err, result) => {
     if (err) {
       console.error('Error adding values to Alumni Alerts/Messages table: ', err);
       return;
@@ -262,16 +255,16 @@ alumniMessages.forEach((value) => {
 // Add values to the Companies table
 const companies = [
   {
-    company_id: 1001,
-    dept_id: 1,
-    salary_offered: 60000,
-    company_name: 'Tech Solutions Inc.'
+    Company_id: 1001,
+    Dept_id: 1,
+    Salary_offered: 60000,
+    Company_name: 'Tech Solutions Inc.'
   },
   {
-    company_id: 1002,
-    dept_id: 2,
-    salary_offered: 65000,
-    company_name: 'Innovate Corp.'
+    Company_id: 1002,
+    Dept_id: 2,
+    Salary_offered: 65000,
+    Company_name: 'Innovate Corp.'
   },
   // Add 3 more tuples with similar structure
 ];
@@ -297,3 +290,8 @@ connection.end((err) => {
   }
   console.log('Connection closed');
 });
+
+
+}
+
+module.exports = insertValues;
