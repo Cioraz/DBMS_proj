@@ -97,8 +97,22 @@
 
         <div class="jumbotron">
             <h1>IRIS- Career Development Cell</h1>
-            <h3>Welcome, <%=user.studentName%> (<%=user.studentRollNum %>)
+            <h3>Welcome, <%=student[0][0].Name%> 
             </h3>
         </div>
+
+        <div class="jumbotron">
+            <h1>Current CGPA: <%=student[0][0].CGPA%> </h1>
+        </div>
+        <div class="jumbotron">
+            <h1>Credits Obtained: <%=student[0][0].Credits_Obtained%> </h1>
+            <h1>Semester : <%= student[0][0].Semester%></h1>
+        </div>
+
+        <div class="jumbotron">
+            <h1>Fee Status: <%=student[0][0].Fee_Paid%> </h1>
+            </div>
+
+
     </div>
     <%- include('./partials/footer.ejs')%>

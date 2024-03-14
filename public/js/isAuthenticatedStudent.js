@@ -19,10 +19,8 @@ const isAuthenticatedStudent = async (studentRegNumber, password, res) => {
             if(student == null){
                 console.log("User Not Found");
             }else{
-                console.log(student[0][0].Password)
-                console.log(password)
-
                 if (student[0][0].Password === password) {
+                    console.log(student)
                     res.render('dashboard', { student });
                 }
                 else{

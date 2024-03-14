@@ -12,13 +12,12 @@ const connection = mysql.createConnection({
     user: 'root',
     password: 'sunil', // Modify to mYSQL paswiord
     database: 'dbmsproj' // Create a database called iris in ur mysql
-
 })
 
 // Making the main express app
 const app = express();
 //createTables();
-insertValues();
+//insertValues();
     
 
 // Setting app settings

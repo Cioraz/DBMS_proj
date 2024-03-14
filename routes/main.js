@@ -5,7 +5,6 @@ const isAuthenticatedStudent = require('../public/js/isAuthenticatedStudent');
 const registerNewCompany = require('../public/js/registerNewCompany');
 const multer = require('multer');
 const mysql = require('mysql2/promise');
-//const { Student, Company } = require('../models/user');
 
 const pool = mysql.createPool({
     host: 'localhost',
