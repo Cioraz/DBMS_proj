@@ -2,6 +2,7 @@
 const Router = require('express');
 const registerAuth = require('../public/js/registerAuth');
 const isAuthenticatedStudent = require('../public/js/isAuthenticatedStudent');
+const isAuthenticatedAdmin = require('../public/js/isAuthenticatedAdmin.js')
 const registerNewCompany = require('../public/js/registerNewCompany');
 const multer = require('multer');
 const mysql = require('mysql2/promise');
@@ -51,9 +52,6 @@ router.post('/studentLogin', async (req, res) => {
     const { studentRegNumber, studentRegPassword } = req.body;
 
     try{
-        // const connection = await pool.getConnection();
-        // const student = await connection.execute(`SELECT * FROM Student WHERE Reg_no = ${studentRegNumber}`);
-        // connection.release();
         isAuthenticatedStudent(studentRegNumber, studentRegPassword, res);
     }catch(err){
         console.log(err);
@@ -69,21 +67,22 @@ router.get('/adminLogin', (req, res) => {
 
 // Admin Login Post
 router.post('/adminLogin', (req, res) => {
-    const { adminUsername, adminPassword } = req.body;
-    Student.findOne({ isAdmin: true })
-        .then(admin => {
-            if (admin) {
-                if (adminUsername === admin.studentName && adminPassword === admin.studentPassword) {
-                    // admin
-                    res.render('adminDashboard');
-                }
-            }
-            else {
-                res.render('admin', { error: 'Invalid Credentials' });
-            }
+    const { adminUsername, adminPassword} = req.body;
 
-        })
+    try{
+        isAuthenticatedAdmin(adminUsername, adminPassword, res);
+    }catch(err){
+        console.log(err);
+    }
 });
+
+router.get('/newUser',(req,res)=>{
+    res.render('register')
+})
+
+router.post('/newUser',(req,res)=>{
+
+})
 
 
 // Register
@@ -96,14 +95,30 @@ router.post('/register', (req, res) => {
     registerAuth(req, res);
 })
 
-// Companies
-router.get('/companies', (req, res) => {
-    Company.find({})
-        .then(company => {
-            res.render('companies', { company });
-        })
+router.get('/alumni',async (req,res)=>{
+    const connection = await pool.getConnection();
+    const alumni = await connection.execute('SELECT Alumni.Reg_no,Alumni.Name, Message, Dept, Department_name, Company_name, Salary_offered FROM Alumni_Message Message, Alumni, Department, Companies WHERE Message.Reg_no = Alumni.Reg_no AND Alumni.Dept = Department.Department_id AND Companies.Company_id = Alumni.Company_id;')
+    console.log(alumni);
+    res.render('alumni',{alumni});
 })
 
+// Companies
+router.get('/companies', async (req, res) => {
+    // write the above in sql
+    const connection = await pool.getConnection();
+    const companies = await connection.execute('SELECT * FROM Companies');
+    connection.release();
+    res.render('companies', { companies });
+
+})
+
+router.get('/department',async (req,res)=>{
+    const connection = await pool.getConnection();
+    const departments = await connection.execute('SELECT * FROM Department');
+    connection.release();
+    console.log(departments)
+    res.render('department',{departments});
+})
 
 // New Company
 router.get('/newCompany', (req, res) => {
@@ -120,10 +135,6 @@ router.get('/logout', (req, res) => {
     res.render('main');
 })
 
-// Student Dashboard
-router.get('/alumniAdvice', (req, res) => {
-    res.render('alumniAdvice');
-});
 
 // Student Dashboard
 router.get('/companiesAdminView', (req, res) => {

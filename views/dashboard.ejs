@@ -72,13 +72,18 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="/alumni">
                         Alumni Advice
                     </a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">
                         Contact Us
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/department">
+                        Departments
                     </a>
                 </li>
 
@@ -110,9 +115,13 @@
         </div>
 
         <div class="jumbotron">
-            <h1>Fee Status: <%=student[0][0].Fee_Paid%> </h1>
-            </div>
-
-
+          <h1>Fee Status: 
+            <% if (student[0][0].Fee_Paid == 0) { %>
+              <span class="text-danger">Not Paid</span>
+            <% } else { %>
+              <span class="text-success">Paid</span>
+            <% } %>
+          </h1>
+        </div>
     </div>
     <%- include('./partials/footer.ejs')%>

@@ -30,14 +30,10 @@
     </nav>
 
     <div class="row">
-        <% for(let comp of company){%>
+        <% for(let comp of companies[0]){%>
             <div class="col-lg-4">
-                <div class="thumbnail">
-                    <img class="img border" src="uploads/<%=comp.companyImage %>" class="card-img-top image">
-
-                </div>
-                <a class='href-text' href="/companyInfo/<%=comp.companyName %>" class="">
-                    <%=comp.companyName %>
+                <a class='href-text' href="/companyInfo/<%=comp.Company_name %>" class="">
+                    <%=comp.Company_name %>
                 </a>
             </div>
             <% }%>

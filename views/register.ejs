@@ -7,6 +7,10 @@
                     <p class="h5 pb-3">Student Registration</p>
                     <form action="/register" class="form-group" method="POST">
                         <div class="form-group">
+                            <input type="text" class="form-control" id="studentRegNumber" placeholder="Enter Student Reg_no"
+                                name="studentRegNumber" value="<%= typeof studentRegNumber !== 'undefined' ? studentRegNumber : '' %>">
+                        </div>
+                        <div class="form-group">
                             <input type="text" class="form-control" id="studentName" placeholder="Enter Student Name"
                                 name="studentName" value="<%= typeof studentName !== 'undefined' ? studentName : '' %>">
 
@@ -20,12 +24,12 @@
                             <select id="inputState" class="form-control" name="studentBranch"
                                 value="<%= typeof studentBranch !== 'undefined' ? studentBranch : '' %>">
                                 <option selected>Choose Branch...</option>
-                                <option value="CS">Computer Science (CS)</option>
-                                <option value="CH">Chemical (CH)</option>
-                                <option value="CV">Civil (CV)</option>
-                                <option value="EE">Electrical and Electronics (EE)</option>
-                                <option value="EC">Electronics and Communication (EC)</option>
-                                <option value="IT">Information Technology (IT)</option>
+                                <option value="1">Computer Science (CS)</option>
+                                <option value="3">Chemical (CH)</option>
+                                <option value="4">Civil (CV)</option>
+                                <option value="2">Electrical and Electronics (EE)</option>
+                                <option value="5">Electronics and Communication (EC)</option>
+                                <option value="6">Information Technology (IT)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -34,9 +38,37 @@
                                 value="<%= typeof studentPassword !== 'undefined' ? studentPassword : '' %>">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" id="studentConfPass"
-                                placeholder="Confirm Password" name="studentConfPass"
-                                value="<%= typeof studentConfPass !== 'undefined' ? studentConfPass : '' %>">
+                            <input type="text" class="form-control" id="studentcgpa"
+                                placeholder="Enter CGPA" name="studentcgpa"
+                                value="<%= typeof studentcgpa !== 'undefined' ? studentcgpa : '' %>">
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="studentcredits"
+                                placeholder="Enter Credits" name="studentcredits"
+                                value="<%= typeof studentcredits !== 'undefined' ? studentcredits : '' %>">
+                        </div>
+                       <div class="form-group">
+                            <select id="inputState" class="form-control" name="studentsemester"
+                                value="<%= typeof studentsemester !== 'undefined' ? studentsemester : '' %>">
+                                <option selected>Choose Semester...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </div>
+                       <div class="form-group">
+                            <select id="inputState" class="form-control" name="studentPaid"
+                                value="<%= typeof studentPaid !== 'undefined' ? studentPaid : '' %>">
+                                <option selected>Fees Paid?</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <button class="btn btn-success btn-block">Register</button>

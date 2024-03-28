@@ -1,4 +1,4 @@
-<%- include('./partials/header.ejs',{title:"Companies"}) %>
+<%- include('./partials/header.ejs',{title:"Departments"}) %>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
@@ -18,6 +18,12 @@
                         Contact Us <span class="sr-only">(current)</span>
                     </a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/department">
+                        Departments <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
             </ul>
             <span class="navbar-text">
                 <a class="navbar-brand" href="/logout">
@@ -28,21 +34,16 @@
         </div>
 
     </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">
-                <%=department.Department_name %>
-            </h1>
-        </div>
-        <div class="container">
-            <img class="img border" src="/uploads/<%=company.companyImage%>" class="card-img-top image">
-        </div>
-        <div class="container pd-4">
-            <p class="text">
-                <%=company.companyDescription %>
-            </p>
-        </div>
+
+    <div class="row">
+        <% for(let dept of departments[0]){%>
+            <div class="col-lg-4">
+                <h1><%=dept.Department_name%></h1>
+            </div>
+            <% }%>
+
     </div>
 
 
+   
     <%- include('./partials/footer.ejs')%>

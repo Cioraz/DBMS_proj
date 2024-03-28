@@ -16,7 +16,7 @@ const connection = mysql.createConnection({
 
 // Making the main express app
 const app = express();
-//createTables();
+createTables();
 //insertValues();
     
 

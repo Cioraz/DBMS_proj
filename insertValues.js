@@ -47,7 +47,7 @@ const Student = [
 
 // Loop through each student value and insert into the Student table
 Student.forEach((value) => {
-  connection.query('INSERT INTO Student SET ?', value, (err, result) => {
+  connection.query('INSERT INTO Student SET ? ', value, (err, result) => {
     if (err) {
       console.error('Error adding values to Student table: ', err);
       return;
@@ -203,12 +203,14 @@ const alumni = [
   {
     Reg_no: 654321,
     Dept: 1,
-    Company_id: 1001
+    Company_id: 1001,
+    Name: "John Marire"
   },
   {
     Reg_no: 765432,
     Dept: 2,
-    Company_id: 1002
+    Company_id: 1002,
+    Name: "Ram Lal"
   },
   // Add 3 more tuples with similar structure
 ];

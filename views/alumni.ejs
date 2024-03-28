@@ -28,21 +28,23 @@
         </div>
 
     </nav>
-    <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">
-                <%=department.Department_name %>
-            </h1>
-        </div>
-        <div class="container">
-            <img class="img border" src="/uploads/<%=company.companyImage%>" class="card-img-top image">
-        </div>
-        <div class="container pd-4">
-            <p class="text">
-                <%=company.companyDescription %>
-            </p>
-        </div>
-    </div>
 
+   <div class="row d-flex flex-wrap justify-content-center">
+<% for(let alu of alumni[0]){%>
+  <div class="col-lg-4 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= alu.Name %> (<%= alu.Department_name %>)</h5>
+        <p class="card-text font-weight-bold mb-2"> 
+          <%= alu.Message %>
+        </p>
+        <p class="card-text text-muted">
+          Salary Offered: <%= alu.Salary_offered %>
+        </p>
+      </div>
+    </div>
+  </div>
+<% }%>
+ </div> 
 
     <%- include('./partials/footer.ejs')%>

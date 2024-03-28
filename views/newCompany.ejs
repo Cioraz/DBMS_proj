@@ -37,11 +37,6 @@
 
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Enter Company Email"
-                                name="companyEmail"
-                                value="<%= typeof companyEmail !== 'undefined' ? companyEmail : '' %>">
-                        </div>
-                        <div class="form-group">
                             <select id="inputState" class="form-control" name="companyBranch"
                                 value="<%= typeof companyBranch !== 'undefined' ? companyBranch : '' %>">
                                 <option selected>Choose Branch...</option>
@@ -53,20 +48,9 @@
                                 <option value="IT">Information Technology (IT)</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <select id="inputState" class="form-control" name="companySalary"
-                                value="<%= typeof companySalary !== 'undefined' ? companySalary : '' %>">
-                                <option selected>Choose Salary...</option>
-                                <option value="1">1-5L</option>
-                                <option value="2">5-10L</option>
-                                <option value="3">20-25L</option>
-                                <option value="4">>25L</option>
-                            </select>
-                        </div>
-                        <div class="form-outline form-group">
-                            <textarea class="form-control" rows="8" placeholder="Enter Company Description"
-                                name="companyDescription"></textarea>
-                        </div>
+                        <input type="text" class="form-control" id="companySalary" placeholder="Enter Salary Offered"
+                                name="companySalary" value="<%= typeof companySalary !== 'undefined' ? companySalary : '' %>">
+
                         <div class="form-group">
                             <input type="file" class="form-control" placeholder="Submit Company Image"
                                 name="companyImage" enctype="multipart/form-data"
