@@ -59,7 +59,3 @@ ADMIN DASHBOARD
 <p>  Adding company Icons   https://www.youtube.com/watch?v=7oiJj5FcyTQ&t=1s</p>
 <p>  Installing Nodemon : https://www.youtube.com/watch?v=4N0d8HhU5DE&t=107s</p>
 <p>  Encrypting the password : https://www.npmjs.com/package/bcrypt</p>
-
-
-<h1>VIDEO:</h1>
-- https://youtu.be/HbaYr53HUho
